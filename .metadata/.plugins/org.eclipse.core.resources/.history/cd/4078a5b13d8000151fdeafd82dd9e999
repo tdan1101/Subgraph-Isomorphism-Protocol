@@ -1,0 +1,36 @@
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+public class FileReader {
+	/*
+	 * Read graph from the given file path
+	 * Return 2D adjacency matrix 
+	 */
+	public int[][] readGraph(String filePath) throws IOException{
+		InputStream is = new FileInputStream(filePath);
+		InputStreamReader isr = new InputStreamReader(is);
+		BufferedReader br = new BufferedReader(isr);
+		ArrayList<String> input = new ArrayList<>();
+		String s;
+		while((s = br.readLine())!= null) 
+			input.add(s);
+		br.close();
+		int row = input.size();
+		int col = (input.get(0)).length();
+		int[][] adjMatrix = new int[row][col];
+		for(int i = 0; i < row; i++){
+			String temp = input.get(i);
+			for(int j = 0; j < col; j++){
+				adjMatrix[i][j] = temp.charAt(j);
+			}
+		}
+		return adjMatrix;
+	}
+	
+
+}

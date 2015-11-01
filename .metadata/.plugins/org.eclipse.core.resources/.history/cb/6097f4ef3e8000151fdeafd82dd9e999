@@ -1,0 +1,41 @@
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+public class FileReader {
+	/*
+	 * Read graph from the given file path
+	 * Return 2D adjacency matrix 
+	 */
+	public int[][] readGraph(String filePath) throws IOException{
+		InputStream is = new FileInputStream(filePath);
+		InputStreamReader isr = new InputStreamReader(is);
+		BufferedReader br = new BufferedReader(isr);
+		ArrayList<String> input = new ArrayList<>();
+		String s;
+		while((s = br.readLine())!= null) 
+			input.add(s);
+		br.close();
+		int graphSize = input.size();
+		int[][] adjMatrix = new int[graphSize][graphSize];
+		for(int i = 0; i < graphSize; i++){
+			String temp = input.get(i);
+			for(int j = 0; j < graphSize; j++){
+				if(temp.charAt(j)!= ' ') {
+					adjMatrix[i][j] = Character.getNumericValue(temp.charAt(j));
+					System.out.println(adjMatrix[i][j]);
+				}
+			}
+		}
+		return adjMatrix;
+	}
+	public static void main(String args[]) throws IOException{
+		FileReader fr = new FileReader();
+		fr.readGraph("/Users/Ji/Documents/Subgraph-Isomorphism-Protocol/SIProtocol/src/g1");
+	}
+
+}
