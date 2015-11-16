@@ -28,7 +28,7 @@ public class Verifier {
 	        InputStreamReader isr = new InputStreamReader(is);
 	        BufferedReader br = new BufferedReader(isr);
 	        String buffer = br.readLine();
-	        System.out.println("Message received from client is "+ buffer);
+	        System.out.println("Message received from prover is "+ buffer);
 	        return buffer;
 		}
 		catch (Exception e){
@@ -66,11 +66,8 @@ public class Verifier {
                 // Get commitment Q from the prover
                 int[][] commitmentQ = convertToMatrix(s);
                 int bit = (int)(Math.random()+0.5);
-                OutputStream os = socket.getOutputStream();
-                OutputStreamWriter osw = new OutputStreamWriter(os);
-   	         	BufferedWriter bw = new BufferedWriter(osw);
-   	         	bw.write(bit);
-   	         	bw.flush();
+                PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+                out.println(" "+bit+"\n");
                 
             }
         }

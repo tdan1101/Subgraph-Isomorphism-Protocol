@@ -60,13 +60,19 @@ public class Prover {
 	         String sendMessage = buffer + "\n";
 	         bw.write(sendMessage);
 	         bw.flush();
-	         System.out.println("Message sent to the server : "+sendMessage);
+	         System.out.println("Message sent to the verifier : "+sendMessage);
 	         //Get the return message from the server
 	         InputStream is = socket.getInputStream();
 	         InputStreamReader isr = new InputStreamReader(is);
 	         BufferedReader br = new BufferedReader(isr);
-	         String message = br.readLine();
-	         System.out.println("Message received from the server : " +message);
+	         int bit = Integer.parseInt(br.readLine());
+	         System.out.println("Message received from the verifier : " + bit);
+	         if(bit == 0){
+	        	 
+	         }
+	         else{
+	        	 
+	         }
 	      }
 	      catch (Exception exception){
 	          exception.printStackTrace();
