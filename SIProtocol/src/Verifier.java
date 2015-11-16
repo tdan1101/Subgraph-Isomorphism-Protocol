@@ -67,7 +67,10 @@ public class Verifier {
                 int[][] commitmentQ = convertToMatrix(s);
                 int bit = (int)(Math.random()+0.5);
                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-                out.println(" "+bit+"\n");
+                out.println(bit+"\n");
+                String verify = receiveBuffer(socket);
+                System.out.println("Need to verify; "+verify);
+                
                 
             }
         }
